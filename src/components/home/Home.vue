@@ -1,7 +1,7 @@
 <template>
   <div>
     <li v-for="article in articles" v-bind:key="article.id">
-      <router-link v-bind:to="{ name: 'details' }">{{article.title}}</router-link>
+      <router-link v-bind:to="{ name: 'details', params: { articleId: article.id} }">{{article.title}}</router-link>
     </li>
   </div>
 </template>
@@ -29,5 +29,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 </style>
