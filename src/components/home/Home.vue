@@ -1,8 +1,15 @@
 <template>
   <div>
-    <li v-for="article in articles" v-bind:key="article.id">
-      <router-link v-bind:to="{ name: 'details', params: { articleId: article.id} }">{{article.title}}</router-link>
-    </li>
+    <h1>Articles</h1>
+    <router-link v-bind:to="{name: 'edit'}">New Article</router-link>
+
+    <ul>
+      <li v-for="article in articles" v-bind:key="article.id">
+        <router-link
+          v-bind:to="{ name: 'details', params: { articleId: article.id} }"
+        >{{article.title}}</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -30,5 +37,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

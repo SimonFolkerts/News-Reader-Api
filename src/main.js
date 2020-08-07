@@ -4,6 +4,7 @@ import App from './App.vue'
 import Home from './components/home/Home.vue'
 import About from './components/about/About.vue'
 import ArticleDetails from './components/article-details/ArticleDetails.vue'
+import EditArticle from './components/edit-article/EditArticle'
 
 import VueResource from "vue-resource";
 
@@ -27,6 +28,11 @@ const routes = [
     name: "details",
     path: '/article/:articleId/details',
     component: ArticleDetails
+  },
+  {
+    name: "edit",
+    path: '/article/edit',
+    component: EditArticle
   }
 ];
 
