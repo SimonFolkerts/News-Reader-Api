@@ -4,10 +4,17 @@
     <router-link v-bind:to="{name: 'edit'}">New Article</router-link>
 
     <ul>
-      <li v-for="article in articles" v-bind:key="article.id">
-        <router-link
-          v-bind:to="{ name: 'details', params: { articleId: article.id} }"
-        >{{article.title}}</router-link>
+      <li v-for="(article, index) in articles" v-bind:key="index">
+        <div>
+          <router-link
+            v-bind:to="{ name: 'details', params: { articleId: article.id} }"
+          >{{article.title}}</router-link>
+        </div>
+        <div>
+          <router-link
+            v-bind:to="{ name: 'edit', params: { articleId: article.id} }"
+          >Edit Article</router-link>
+        </div>
       </li>
     </ul>
   </div>
