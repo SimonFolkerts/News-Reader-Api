@@ -11,9 +11,8 @@
           >{{article.title}}</router-link>
         </div>
         <div>
-          <router-link
-            v-bind:to="{ name: 'edit', params: { articleId: article.id} }"
-          >Edit Article</router-link>
+          <router-link v-bind:to="{ name: 'edit', params: { articleId: article.id} }">Edit Article</router-link>
+          <a href="#" v-on:click.prevent="deleteArticle(article.id)">Delete Article</a>
         </div>
       </li>
     </ul>
@@ -31,14 +30,26 @@ export default {
 
   components: {},
 
-  methods: {},
+  methods: {
+    deleteArticle: function(articleId) {
+      this.$http
+        .delete(`https://example-api4.glitch.me/api/articles/${articleId}`)
+        .then(function() {
+          this.getArticles()
+        });
+    },
+
+    getArticles: function() {
+      this.$http
+        .get(`https://example-api4.glitch.me/api/articles`)
+        .then(function(data) {
+          this.articles = data.body.articles;
+        });
+    }
+  },
 
   created: function() {
-    this.$http
-      .get(`https://example-api4.glitch.me/api/articles`)
-      .then(function(data) {
-        this.articles = data.body.articles;
-      });
+    this.getArticles();
   }
 };
 </script>
