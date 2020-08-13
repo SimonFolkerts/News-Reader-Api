@@ -1,3 +1,5 @@
+<!-- This is the root component that will get mounted on an element in the html. It will include the child components such as the headers, and whatever the router is instructed to display -->
+
 <template>
   <div id="app">
     <my-header></my-header>
