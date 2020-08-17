@@ -1,6 +1,9 @@
 # news-reader
 
 ## Project setup
+
+Create a .env file in the root directory (alongside src and public etc) that contains the url of the api e.g. VUE_APP_API_URL=http://example-api4.glitch.me/api/
+
 ```
 npm install
 ```
@@ -23,7 +26,3 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-This project contains several major use cases
-
-### Use Case: Get Articles
-The application requires a component that will retrieve a list of articles from an api. This will be the home component.

@@ -21,7 +21,7 @@
           <!-- This router link will instruct vue-router to switch out this component for the edit article component, passing it the article id as a param as well -->
           <router-link v-bind:to="{ name: 'edit', params: { articleId: article.id} }">Edit Article</router-link>
           <!-- This link is a regular anchor tag that has a vue listener on it that triggers the deleteArticle method stored in this components methods object 
-          The id of the article this link represents is passed to the function so that it knows which article is to be deleted -->
+          The id of the article this link represents is passed to the function so that it knows which article is to be deleted-->
           <a href="#" v-on:click.prevent="deleteArticle(article.id)">Delete Article</a>
         </div>
       </li>
@@ -32,10 +32,10 @@
 <script>
 export default {
   name: "Home",
-  data: function() {
+  data: function () {
     return {
       // This is where the list of articles is stored
-      articles: []
+      articles: [],
     };
   },
 
@@ -43,29 +43,29 @@ export default {
 
   methods: {
     // This method, when called and passed an id, sends a request to the api to have that article deleted
-    deleteArticle: function(articleId) {
+    deleteArticle: function (articleId) {
       this.$http
-        .delete(`https://example-api4.glitch.me/api/articles/${articleId}`)
-        .then(function() {
+        .delete(`${process.env.VUE_APP_API_URL}articles/${articleId}`)
+        .then(function () {
           // Once the response is received, reload the article list by calling get articles
           this.getArticles();
         });
     },
 
-// This function sends a request to the api to retreive all the articles, and then stores them in the article property of the data object
-    getArticles: function() {
+    // This function sends a request to the api to retreive all the articles, and then stores them in the article property of the data object
+    getArticles: function () {
       this.$http
-        .get(`https://example-api4.glitch.me/api/articles`)
-        .then(function(data) {
+        .get(`${process.env.VUE_APP_API_URL}articles`)
+        .then(function (data) {
           this.articles = data.body.articles;
         });
-    }
+    },
   },
 
   // This lifecycle hook executes whenever this component is created, and calls the function that retreives the articles from the api
-  created: function() {
+  created: function () {
     this.getArticles();
-  }
+  },
 };
 </script>
 
