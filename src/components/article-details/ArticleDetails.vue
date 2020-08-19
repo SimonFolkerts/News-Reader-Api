@@ -19,7 +19,7 @@ export default {
     this.$http
       .get(`${process.env.VUE_APP_API_URL}articles/${id}`)
       .then(function (data) {
-        this.article = data.body.article;
+        this.article = data.body;
       });
   },
 };

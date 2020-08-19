@@ -14,15 +14,15 @@
           It is being passed the name of a route defined oin main.js, and a route parameter named articleId that is being assigned the value of article.id, which is stored in the data object of this component
           When clicked, it intructs vue-router to switch out this component for the one specified in the path on main.js, passing it the id as a param as well-->
           <router-link
-            v-bind:to="{ name: 'details', params: { articleId: article.id} }"
+            v-bind:to="{ name: 'details', params: { articleId: article._id} }"
           >{{article.title}}</router-link>
         </div>
         <div>
           <!-- This router link will instruct vue-router to switch out this component for the edit article component, passing it the article id as a param as well -->
-          <router-link v-bind:to="{ name: 'edit', params: { articleId: article.id} }">Edit Article</router-link>
+          <router-link v-bind:to="{ name: 'edit', params: { articleId: article._id} }">Edit Article</router-link>
           <!-- This link is a regular anchor tag that has a vue listener on it that triggers the deleteArticle method stored in this components methods object 
           The id of the article this link represents is passed to the function so that it knows which article is to be deleted-->
-          <a href="#" v-on:click.prevent="deleteArticle(article.id)">Delete Article</a>
+          <a href v-on:click.prevent="deleteArticle(article._id)">Delete Article</a>
         </div>
       </li>
     </ul>
@@ -57,7 +57,8 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API_URL}articles`)
         .then(function (data) {
-          this.articles = data.body.articles;
+          console.log(data.body);
+          this.articles = data.body;
         });
     },
   },

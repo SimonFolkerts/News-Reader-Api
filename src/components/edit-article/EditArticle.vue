@@ -92,6 +92,7 @@ export default {
     // this function sends a post request to the api, and includes an article object as its payload
     // the api will interpret this as a request to create a new article entry in the database
     createArticle: function (article) {
+      console.log(article);
       this.$http
         .post(`${process.env.VUE_APP_API_URL}articles`, article)
         .then(function () {
