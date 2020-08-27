@@ -57,7 +57,6 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API_URL}articles`)
         .then(function (data) {
-          console.log(data.body);
           this.articles = data.body;
         });
     },

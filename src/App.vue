@@ -2,10 +2,10 @@
 
 <template>
   <div id="app">
-    <my-header></my-header>
+    <my-header loggedIn="isLogged"></my-header>
     <hr />
     <h2>This is my App</h2>
-    <router-view></router-view>
+    <router-view @loggedIn="setLoggedIn"></router-view>
     <hr />
     <my-footer></my-footer>
   </div>
@@ -15,13 +15,20 @@
 import MyHeader from "./components/Header.vue";
 import MyFooter from "./components/Footer.vue";
 
-
 export default {
   name: "App",
   components: {
     "my-header": MyHeader,
     "my-footer": MyFooter,
-  }
+  },
+  data: function () {
+    return { isLogged: false };
+  },
+  methods: {
+    setLoggedIn: function () {
+      this.isLogged = true;
+    },
+  },
 };
 </script>
 
