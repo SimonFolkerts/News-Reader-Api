@@ -5,6 +5,7 @@ import Home from './components/home/Home.vue'
 import About from './components/about/About.vue'
 import ArticleDetails from './components/article-details/ArticleDetails.vue'
 import EditArticle from './components/edit-article/EditArticle'
+import Register from './components/register/Register.vue'
 
 import VueResource from "vue-resource";
 
@@ -26,19 +27,23 @@ const routes = [
   },
   {
     name: "details",
-    path: '/article/:articleId/details',
+    path: '/article/:articleId/asldkfjasldkfj',
     component: ArticleDetails
   },
   {
     name: "edit",
     path: '/article/:articleId?/edit',
     component: EditArticle
+  },
+  {
+    path: '/register',
+    component: Register
   }
 ];
 
 const router = new VueRouter({
   routes: routes,
-  mode: "hash"
+  mode: "history"
 })
 
 

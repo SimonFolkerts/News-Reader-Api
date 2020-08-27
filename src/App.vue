@@ -4,7 +4,7 @@
   <div id="app">
     <my-header></my-header>
     <hr />
-    <h2>This is my App</h2>
+    <h1>This is my App</h1>
     <router-view></router-view>
     <hr />
     <my-footer></my-footer>

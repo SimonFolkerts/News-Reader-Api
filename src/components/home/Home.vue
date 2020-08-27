@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Articles</h1>
+    <h2>Articles</h2>
     <!-- This router link swwaps out this component for the edit article component, and doesn't pass it anything -->
     <router-link v-bind:to="{name: 'edit'}">New Article</router-link>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>New Article</h1>
+    <h1>{{mode}} Article</h1>
     <!-- add a submit listener on the form, when the form submits, vue will handle it with the specified method 'checkForm', it will also suppress the default submit behaviour of a form (sending a request and reloading the page) -->
     <form v-on:submit.prevent="checkForm">
       <div class="errors">
@@ -54,6 +54,7 @@ export default {
   name: "EditArticle",
   data: function () {
     return {
+      mode: "New",
       editing: false,
       // this is where the errors are put if they are detected by the checkForm method
       errors: [],
@@ -78,6 +79,7 @@ export default {
         }
       }
       // finally, a set of if statements determine which, if any, inputs aren't filled out and add the corresponding error message to the array of error messages in the data object
+      this.errors = [];
       if (!this.article.title) {
         this.errors.push("Title Required");
       }
@@ -105,7 +107,7 @@ export default {
     // the api will interpret this as a request to edit an existing entry
     editArticle: function (article) {
       this.$http
-        .put(`${process.env.VUE_APP_API_URL}articles/${article.id}`, article)
+        .put(`${process.env.VUE_APP_API_URL}articles/${article._id}`, article)
         .then(function () {
           // upon receiving confirmation from the api, it then commands the vue router to go to the home view
           this.$router.push({ path: "/" });
@@ -118,6 +120,7 @@ export default {
     if (this.$route.params.articleId) {
       // id there is one, it sets editing mode to true, because it means that an edit article link was clicked, which sends through the id of the article as a parameter
       this.editing = true;
+      this.mode = "Edit";
       // it then sends a get request to the api to retreive the article that owns the id passed through
       this.$http
         .get(
@@ -125,7 +128,7 @@ export default {
         )
         .then(function (data) {
           // and when the article is received, it is loaded into the article object stored in this components' data object, which is bound to the template and therefore automatically fills out the form
-          this.article = data.body.article;
+          this.article = data.body;
         });
     }
     // otherwise if no param is present, it must mean that the 'new article' link was clicked, and therefore the editing mode stays false, and no article is retreived, the form stays blank and no requests are sent until the user has properly filled out the form and submitted, which is handled elsewhere, in the checkForm method
