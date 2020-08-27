@@ -105,7 +105,7 @@ export default {
     // the api will interpret this as a request to edit an existing entry
     editArticle: function (article) {
       this.$http
-        .put(`${process.env.VUE_APP_API_URL}articles/${article.id}`, article)
+        .put(`${process.env.VUE_APP_API_URL}articles/${article._id}`, article)
         .then(function () {
           // upon receiving confirmation from the api, it then commands the vue router to go to the home view
           this.$router.push({ path: "/" });
@@ -125,7 +125,8 @@ export default {
         )
         .then(function (data) {
           // and when the article is received, it is loaded into the article object stored in this components' data object, which is bound to the template and therefore automatically fills out the form
-          this.article = data.body.article;
+          this.article = data.body;
+          console.log(this.article);
         });
     }
     // otherwise if no param is present, it must mean that the 'new article' link was clicked, and therefore the editing mode stays false, and no article is retreived, the form stays blank and no requests are sent until the user has properly filled out the form and submitted, which is handled elsewhere, in the checkForm method
