@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Register User</h1>
+    <h1>Log In</h1>
 
     <form v-on:submit.prevent="checkForm">
       <!-- error display -->
@@ -51,6 +51,7 @@ export default {
           if (response.body.email) {
             localStorage.loggedIn = "yes";
             localStorage.userEmail = user.email;
+            localStorage.userId = response.body._id;
             //emit event for App to recieve
             EventBus.$emit("$loggedIn");
             this.$router.push({ path: "/" });

@@ -96,7 +96,7 @@ export default {
     createArticle: function (article) {
       console.log(article);
       this.$http
-        .post(`${process.env.VUE_APP_API_URL}articles`, article)
+        .post(`${process.env.VUE_APP_API_URL}users/${localStorage.userId}/articles`, article)
         .then(function () {
           // upon receiving confirmation from the api, it then commands the vue router to go to the home view
           this.$router.push({ path: "/" });
