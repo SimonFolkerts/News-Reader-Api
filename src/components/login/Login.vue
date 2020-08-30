@@ -17,7 +17,7 @@
         <input v-model="user.email" type="text" name="email" id="email" />
       </div>
       <div>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Log In" />
       </div>
     </form>
   </div>

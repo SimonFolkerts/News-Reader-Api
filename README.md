@@ -46,3 +46,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1. Create an EventBus
 1. Login link should toggle between login vs logout depending on logged state, set via EventBus.
 1. Login page should attempt login, if error display error; if success, load loggedin state and email into local storage and update the event bus loggedIn state and load home view.
+1. Login page should log out by clearing local storage values and then updating event bus again
+
+### Change Create and Edit to use Auth Endpoints
+1. Change put and post urls to the auth endpoints
+1. Update the login system to pass user Id through too (login endpoint should send id)
+1. When posting or putting, should send user ID through for confirmation
+
+### Add a My Articles Component
