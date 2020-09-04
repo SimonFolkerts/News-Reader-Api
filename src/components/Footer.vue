@@ -1,4 +1,5 @@
 <template>
+<!-- nothing to see here -->
   <h3>Footer</h3>
 </template>
 
