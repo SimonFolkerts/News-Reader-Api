@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Register User</h1>
+    <h1>Log In</h1>
 
     <form v-on:submit.prevent="checkForm">
       <!-- error display, this iterates through all the errors present in the error display and shows them. If there are none it doesn't render at all. -->
